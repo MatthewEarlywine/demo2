@@ -11,12 +11,12 @@ import java.util.Optional;
 import static com.example2.demo2.security.ApplicationUserRole.*;
 
 @Repository("fake")
-public class FakeApplicationUserDAOService implements ApplicationUserDAO{
+public class FakeApplicationUserDaoService implements ApplicationUserDao {
 
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public FakeApplicationUserDAOService(PasswordEncoder passwordEncoder) {
+    public FakeApplicationUserDaoService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 

@@ -10,18 +10,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApplicationUserService implements UserDetailsService {
 
-    private final ApplicationUserDAO applicationUserDAO;
+    private final ApplicationUserDao applicationUserDao;
 
     @Autowired
-    public ApplicationUserService(@Qualifier("fake") ApplicationUserDAO applicationUserDAO) {
-        this.applicationUserDAO = applicationUserDAO;
+    public ApplicationUserService(@Qualifier("fake") ApplicationUserDao applicationUserDao) {
+        this.applicationUserDao = applicationUserDao;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return applicationUserDAO
+        return applicationUserDao
                 .selectApplicationUserByUsername(username)
                 .orElseThrow(() ->
-                        new UsernameNotFoundException(String.format("Username %s not found", username)));
+                        new UsernameNotFoundException(String.format("Username %s not found", username))
+                );
     }
 }
